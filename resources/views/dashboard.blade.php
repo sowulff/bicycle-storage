@@ -17,3 +17,4 @@
 {{-- @include('errors') --}}
 
 <h1>Hello, {{ $user->name }}!</h1>
+<a href="admin">Add new bike here!</a>
