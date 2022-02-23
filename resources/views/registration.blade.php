@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <title>To Do App</title>
-</head>
+@extends('layouts.basic')
+@section('content')
 
 <section class="px-4 py-4">
     <h1 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-emerald-400 to-sky-700 py-2">
@@ -36,3 +29,4 @@
 
 </form>
 </section>
+@endsection
