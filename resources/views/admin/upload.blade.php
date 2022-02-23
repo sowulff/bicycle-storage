@@ -1,3 +1,6 @@
+@extends('layouts.basic')
+@section('content')
+
 <form method="post" action="/upload" class="py-8">
     @csrf
     <div class="form-group">
@@ -24,3 +27,4 @@
     </div>
 
 </form>
+@endsection
