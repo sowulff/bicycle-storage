@@ -8,7 +8,7 @@
     <title>The Bicycle Storage</title>
 </head>
 <body>
-    <div>
+    <div class="py-5 px-5">
         @yield('content')
     </div>
 </body>

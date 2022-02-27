@@ -1,6 +1,5 @@
 @extends('layouts.basic')
 @section('content')
-<body>
     <h1>Welcome</h1>
 
     <form action="login" method="post">
@@ -15,6 +14,5 @@
     </div>
     <button type="submit" class="bg-sky-600 hover:bg-sky-700 rounded-full mt-3 px-3 text-white font-bold text-sm">Login</button>
     </form>
-</body>
-</html>
+    @include('errors')
 @endsection
