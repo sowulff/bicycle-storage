@@ -23,9 +23,11 @@ class CreateBicycleTest extends TestCase
         $user->password = Hash::make('123');
         $user->save();
 
-        $this
+        $response = $this
+            ->from('/')
+            ->followingRedirects()
             ->actingAs($user)
-            ->post('bicycles', [
+            ->post('upload', [
                 'name' => 'Superbike',
                 'image' => 'https://upload.wikimedia.org/wikipedia/commons/4/41/Left_side_of_Flying_Pigeon.jpg',
                 'price' => 1000,

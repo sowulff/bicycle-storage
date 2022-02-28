@@ -30,6 +30,6 @@
 
 </form>
 
-<a class="hover:underline hover:text-gray-500" href="{{ url()->previous() }}">&larr; Back</a>
+<a class="hover:underline hover:text-gray-500" href="/dashboard">&larr; Back</a>
 @include('errors')
 @endsection
