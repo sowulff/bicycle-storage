@@ -11,5 +11,7 @@
 
 <h1>Hello, {{ $user->name }}!</h1>
 <a class="underline text-sky-300" href="admin">Add new bike here!</a>
+<a class="underline text-sky-300" href="bicycles/all">See all our bikes here!</a>
+
 
 @endsection
