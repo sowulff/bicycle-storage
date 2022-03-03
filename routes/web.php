@@ -20,9 +20,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
+->name(login) renames welcome to "login" so that 'auth' can point to the login-page a.k.a startpage in our case.
+*/
+
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('login');
 Route::post('login', LoginController::class);
 Route::get('dashboard', DashboardController::class)->middleware('auth');
 Route::get('logout', LogoutController::class)->middleware('auth');
