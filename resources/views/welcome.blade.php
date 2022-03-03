@@ -1,20 +1,22 @@
 @extends('layouts.basic')
 @section('content')
-<body>
-    <h1>Welcome</h1>
+<div class="shadow-2xl p-12 mt-32 max-w-sm mx-auto rounded">
+    <h1 class="mb-6 text-3xl text-center">
+      BicycleStorage 2.0
+    </h1>
 
     <form action="login" method="post">
         @csrf
+      <label for="email" class="block mb-2">Email</label>
+      <input name="email" id="email" type="email" maxlength="40" required autofocus placeholder="user@example.com" class="block border rounded p-3 mb-3 w-full">
 
-        <label for="email" class="font-bold text-slate-700">Email</label>
-        <input name="email" id="email" type="email" class="rounded-md mb-2 border-2 pl-1 text-sm" />
-    </div>
-    <div>
-        <label for="password" class="font-bold text-slate-700">Password</label>
-        <input name="password" id="password" type="password" class="rounded-md border-2 pl-1 text-sm"/>
-    </div>
-    <button type="submit" class="bg-sky-600 hover:bg-sky-700 rounded-full mt-3 px-3 text-white font-bold text-sm">Login</button>
+      <label for="password" class="block mb-2">Password</label>
+      <input name="password" id="password" type="password" required maxlength="40" placeholder="**********" class="block border rounded p-3 mb-6 w-full">
+
+      <button type="submit" class="login-button block text-lg font-bold bg-orange-400 w-full p-3 rounded text-black hover:bg-orange-500 hover:shadow-md">
+          Login
+        </button>
     </form>
-</body>
-</html>
+  </div>
+    @include('errors')
 @endsection
