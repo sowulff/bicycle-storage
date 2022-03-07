@@ -37,4 +37,4 @@ Route::get('bicycles/all', ListAllBicyclesController::class)->middleware('auth')
 Route::get('registerNewUser', function () {
     return view('registerNewUser');
 });
-Route::post('registerNewUser', RegisterNewUserController::class)->middleware('guest');
+Route::post('registerNewUser', RegisterNewUserController::class)->name('registerNewUser')->middleware('guest');

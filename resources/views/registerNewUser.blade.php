@@ -9,7 +9,7 @@
       Register new user
     </h3>
 
-    <form action="login" method="post">
+    <form action="{{ route("registerNewUser") }}" method="post">
         @csrf
       <label for="name" class="block mb-2">Name</label>
       <input name="name" id="name" type="text" maxlength="40" required autofocus placeholder="Example Name" class="block border rounded p-3 mb-3 w-full">
