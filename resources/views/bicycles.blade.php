@@ -5,14 +5,13 @@
     <h2 class="text-3xl mx-auto">Here are all our bikes!</h2>
     @foreach ($bicycles as $bicycle)
     <div class="shadow-sm p-12 min-w-[300px] max-w-sm mx-auto rounded flex flex-col mt-4">
-    <p class="text-xl pb-2">{{$bicycle->name . " " . '(' . $bicycle->price . 'kr)'}}</p>
-    <img src="{{ $bicycle->image }}" alt="">
+        <p class="text-xl pb-2">{{$bicycle->name . " " . '(' . $bicycle->price . 'kr)'}}</p>
+        <img src="{{ $bicycle->image }}" alt="">
+        <button">Buy</button>
     </div>
-
     @endforeach
-
+    <a href="cartView">Go to cart</a>
     <a class="hover:underline hover:text-gray-500 mt-8" href="/dashboard">&larr; Back</a>
-  </div>
-
+</div>
 @include('errors')
 @endsection

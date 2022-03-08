@@ -38,3 +38,7 @@ Route::get('registerNewUser', function () {
     return view('registerNewUser');
 });
 Route::post('registerNewUser', RegisterNewUserController::class)->name('registerNewUser')->middleware('guest');
+
+Route::get('cartView', function () {
+    return view('cart');
+});
