@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ListAllBicyclesController;
 use App\Http\Controllers\LoginController;
@@ -38,3 +39,5 @@ Route::get('registerNewUser', function () {
     return view('registerNewUser');
 });
 Route::post('registerNewUser', RegisterNewUserController::class)->name('registerNewUser')->middleware('guest');
+
+Route::get('adminPanel', AdminPanelController::class)->middleware('auth');
