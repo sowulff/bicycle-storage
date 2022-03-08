@@ -9,12 +9,12 @@
 </div>
 @endforeach
 <form action="">
-    <form action="">
-        <div class="form-group">
-            <label for="quantity" class="block mt-2 w-56 text-slate-700">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" class="rounded-md mb-2 border-2 pl-1 text-sm w-56">
-        </div>
-    </form>
+    <div class="form-group">
+        <label for="quantity" class="block mt-2 w-56 text-slate-700">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" class="rounded-md mb-2 border-2 pl-1 text-sm w-56">
+    </div>
+
+    <button>Make order</button>
 </form>
 
 
