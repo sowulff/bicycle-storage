@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DeleteBicycleController;
 use App\Http\Controllers\ListAllBicyclesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -38,3 +39,8 @@ Route::get('registerNewUser', function () {
     return view('registerNewUser');
 });
 Route::post('registerNewUser', RegisterNewUserController::class)->name('registerNewUser')->middleware('guest');
+
+Route::post('deleteBicycle/{bicycle:id}', [
+    'as' => 'deleteBicycle',
+    'uses' => DeleteBicycleController::class
+]);
