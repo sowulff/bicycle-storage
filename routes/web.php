@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\buyBikeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ListAllBicyclesController;
 use App\Http\Controllers\LoginController;
@@ -39,6 +40,4 @@ Route::get('registerNewUser', function () {
 });
 Route::post('registerNewUser', RegisterNewUserController::class)->name('registerNewUser')->middleware('guest');
 
-Route::get('cartView', function () {
-    return view('cart');
-});
+Route::get('bicycles/buyBike', buyBikeController::class)->middleware('auth');
