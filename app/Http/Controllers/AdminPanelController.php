@@ -9,7 +9,7 @@ class AdminPanelController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $users = User::all();
+        $users = User::orderBy('is_admin', 'desc')->orderBy('name', 'asc')->get();
         return view('admin/adminPanel', ['users' => $users]);
     }
 }
