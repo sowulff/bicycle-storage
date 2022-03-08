@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ListAllBicyclesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\MakeAdminController;
 use App\Http\Controllers\RegisterNewUserController;
+use App\Http\Controllers\RemoveAdminController;
+use App\Http\Controllers\RemoveUserController;
 use App\Http\Controllers\UploadController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
@@ -38,3 +42,20 @@ Route::get('registerNewUser', function () {
     return view('registerNewUser');
 });
 Route::post('registerNewUser', RegisterNewUserController::class)->name('registerNewUser')->middleware('guest');
+
+Route::get('adminPanel', AdminPanelController::class)->middleware('auth');
+
+Route::post('makeAdmin/{user:id}', [
+    'as'   => 'makeAdmin',
+    'uses' => MakeAdminController::class,
+]);
+
+Route::post('removeAdmin/{user:id}', [
+    'as'   => 'removeAdmin',
+    'uses' => RemoveAdminController::class,
+]);
+
+Route::post('removeUser/{user:id}', [
+    'as'   => 'removeUser',
+    'uses' => RemoveUserController::class,
+]);
