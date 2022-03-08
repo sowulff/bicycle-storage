@@ -1,6 +1,7 @@
 @extends('layouts.basic')
 @section('content')
     <div class="shadow-2xl p-12 mt-32 max-w-sm mx-auto rounded">
+        <a class="hover:underline hover:text-gray-500 block mb-6" href="/dashboard">&larr; Back</a>
         <h1 class="text-3xl font-bold underline text-center">List of all users</h1>
         @foreach ($users as $user)
             <div class="shadow-sm p-12 min-w-[300px] max-w-sm mx-auto rounded flex flex-col mt-4">
@@ -11,16 +12,20 @@
                         <b>Yes</b>
                         <form action="{{ route('removeAdmin', $user) }}" method="post">
                             @csrf
-                            <button type="submit">Remove admin</button>
+                            <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 py-1 px-1 rounded-md mb-2">Remove admin</button>
                         </form>
                     @else
                         No
                         <form action="{{ route('makeAdmin', $user) }}" method="post">
                             @csrf
-                            <button type="submit">Make admin</button>
+                            <button type="submit" class="bg-green-400 hover:bg-green-500 py-1 px-1 rounded-md mb-2">Make admin</button>
                         </form>
                     @endif
                 </p>
+                <form action="{{ route('removeUser', $user) }}" method="post">
+                    @csrf
+                    <button type="submit" class="bg-red-400 py-1 px-1 rounded-md hover:bg-red-500">Remove user</button>
+                </form>
 
             </div>
 

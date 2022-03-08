@@ -8,6 +8,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MakeAdminController;
 use App\Http\Controllers\RegisterNewUserController;
 use App\Http\Controllers\RemoveAdminController;
+use App\Http\Controllers\RemoveUserController;
 use App\Http\Controllers\UploadController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
@@ -52,4 +53,9 @@ Route::post('makeAdmin/{user:id}', [
 Route::post('removeAdmin/{user:id}', [
     'as'   => 'removeAdmin',
     'uses' => RemoveAdminController::class,
+]);
+
+Route::post('removeUser/{user:id}', [
+    'as'   => 'removeUser',
+    'uses' => RemoveUserController::class,
 ]);
