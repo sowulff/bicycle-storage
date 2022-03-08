@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bicycle;
 use Illuminate\Http\Request;
 
-class buyBikeController extends Controller
+class orderBicycleController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -16,8 +16,10 @@ class buyBikeController extends Controller
     public function __invoke(Request $request)
     {
         $id = $request->input('bicycle-id');
-        $bicycle = Bicycle::select('name', 'price', 'image', 'quantity')->where('id', '=', $id)->get();
+        $quantity = $request->input('quantity');
 
-        return view('cart', ['bicycle' => $bicycle]);
+        Bicycle::where('id', '=', $id)->quantity = $quantity;
+
+        return back();
     }
 }

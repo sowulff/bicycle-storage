@@ -1,15 +1,15 @@
 <?php
 
-use App\Http\Controllers\buyBikeController;
+use App\Http\Controllers\BuyBikeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ListAllBicyclesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\OrderBicycleController;
 use App\Http\Controllers\RegisterNewUserController;
 use App\Http\Controllers\UploadController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -40,4 +40,5 @@ Route::get('registerNewUser', function () {
 });
 Route::post('registerNewUser', RegisterNewUserController::class)->name('registerNewUser')->middleware('guest');
 
-Route::get('bicycles/buyBike', buyBikeController::class)->middleware('auth');
+Route::get('bicycles/buyBike', BuyBikeController::class)->middleware('auth');
+Route::get('bicycles/orderBike', OrderBicycleController::class)->middleware('auth');
