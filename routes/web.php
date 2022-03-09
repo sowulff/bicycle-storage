@@ -10,7 +10,9 @@ use App\Http\Controllers\RegisterNewUserController;
 use App\Http\Controllers\RemoveAdminController;
 use App\Http\Controllers\RemoveUserController;
 use App\Http\Controllers\UploadController;
+use App\Models\User;
 use Illuminate\Auth\Events\Login;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -59,3 +61,14 @@ Route::post('removeUser/{user:id}', [
     'as'   => 'removeUser',
     'uses' => RemoveUserController::class,
 ]);
+
+Route::get('updateUser/{user}', function (User $user) {
+    return view('admin.updateUser', [
+        'user' => $user,
+    ]);
+});
+
+// Route::post('editUser/{user:id}', [
+//     'as'   => 'editUser',
+//     'uses' => EditUserController::class,
+// ]);
