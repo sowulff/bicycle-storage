@@ -13,10 +13,10 @@ class buyBikeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request, Bicycle $bicycle)
     {
-        $id = $request->input('bicycle-id');
-        $bicycle = Bicycle::select('name', 'price', 'image', 'quantity')->where('id', '=', $id)->get();
+        //$bicycle = Bicycle::select('name', 'price', 'image', 'quantity')->where('id', '=', $bicycle->id)->get();
+        $bicycle = Bicycle::all();
 
         return view('cart', ['bicycle' => $bicycle]);
     }

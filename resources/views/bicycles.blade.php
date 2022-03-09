@@ -7,11 +7,7 @@
     <div class="shadow-sm p-12 min-w-[300px] max-w-sm mx-auto rounded flex flex-col mt-4">
         <p class="text-xl pb-2">{{$bicycle->name . " " . '(' . $bicycle->price . 'kr)'}}</p>
         <img src="{{ $bicycle->image }}" alt="">
-
-        <form action="buyBike">
-            <button>Select Bike</button>
-            <input type="hidden" name="bicycle-id" value="{{$bicycle->id}}">
-        </form>
+        <a href="{{ route('buyBike', $bicycle)}}">Select bike</a>
     </div>
     @endforeach
     <a href="cartView">Go to cart</a>

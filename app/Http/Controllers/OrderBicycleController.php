@@ -7,19 +7,11 @@ use Illuminate\Http\Request;
 
 class orderBicycleController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function __invoke(Request $request)
+    public function __invoke( Request $request, Bicycle $bicycle)
     {
-        $id = $request->input('bicycle-id');
-        $quantity = $request->input('quantity');
-
-        Bicycle::where('id', '=', $id)->quantity = $quantity;
-
+        $quantity = $request->quantity;
+        $bicycle->update(['quantity' => $quantity]);
+        $bicycle->save();
         return back();
     }
 }

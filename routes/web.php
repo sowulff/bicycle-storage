@@ -40,5 +40,15 @@ Route::get('registerNewUser', function () {
 });
 Route::post('registerNewUser', RegisterNewUserController::class)->name('registerNewUser')->middleware('guest');
 
-Route::get('bicycles/buyBike', BuyBikeController::class)->middleware('auth');
-Route::get('bicycles/orderBike', OrderBicycleController::class)->middleware('auth');
+//Route::get('bicycles/buyBike', BuyBikeController::class)->middleware('auth');
+Route::get('bicycles/buyBike/{bicycle:id}', [
+    'as' => 'bicycles/buyBike',
+    'uses' => BuyBikeController::class
+]);
+
+
+//Route::get('bicycles/orderBike', OrderBicycleController::class)->middleware('auth');
+Route::post('orderBike/{bicycle:id}', [
+    'as' => 'orderBike',
+    'uses' => OrderBicycleController::class
+]);
