@@ -24,8 +24,9 @@
                 </p>
                 <form action="{{ route('removeUser', $user) }}" method="post">
                     @csrf
-                    <button type="submit" class="bg-red-400 py-1 px-1 rounded-md hover:bg-red-500">Remove user</button>
+                    <button type="submit" class="bg-red-400 py-1 px-1 rounded-md hover:bg-red-500 mb-2">Remove user</button>
                 </form>
+                <a class="underline text-sky-300 hover:text-sky-500" href="/editUser/{{$user->id}}">Update user details</a>
 
             </div>
 

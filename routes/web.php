@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EditUserController;
 use App\Http\Controllers\ListAllBicyclesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -10,7 +11,9 @@ use App\Http\Controllers\RegisterNewUserController;
 use App\Http\Controllers\RemoveAdminController;
 use App\Http\Controllers\RemoveUserController;
 use App\Http\Controllers\UploadController;
+use App\Models\User;
 use Illuminate\Auth\Events\Login;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -58,4 +61,16 @@ Route::post('removeAdmin/{user:id}', [
 Route::post('removeUser/{user:id}', [
     'as'   => 'removeUser',
     'uses' => RemoveUserController::class,
+]);
+
+Route::get('editUser/{user}', function (User $user) {
+    return view('admin.editUser', [
+        'user' => $user,
+    ]);
+});
+
+Route::post('editUser/{bicycle:id}', [
+    'as' => 'editUser',
+    'uses' => EditUserController::class,
+
 ]);
