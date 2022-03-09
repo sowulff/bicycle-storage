@@ -2,7 +2,8 @@
 @section('content')
 
 <h2>Order your HELLO</h2>
-@foreach ($bicycle as $bicycle)
+
+
 <div class="shadow-sm p-12 min-w-[300px] max-w-sm mx-auto rounded flex flex-col mt-4">
     <p class="text-xl pb-2">{{$bicycle->name . " " . '(' . $bicycle->price . 'kr)'}}</p>
     <p>{{$bicycle->quantity . ' st'}}</p>
@@ -15,7 +16,7 @@
         <button>Make order</button>
     </form>
 </div>
-@endforeach
+
 
 
 @endsection

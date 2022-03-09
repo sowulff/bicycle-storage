@@ -7,7 +7,7 @@
     <div class="shadow-sm p-12 min-w-[300px] max-w-sm mx-auto rounded flex flex-col mt-4">
         <p class="text-xl pb-2">{{$bicycle->name . " " . '(' . $bicycle->price . 'kr)'}}</p>
         <img src="{{ $bicycle->image }}" alt="">
-        <a href="{{ route('buyBike', $bicycle)}}">Select bike</a>
+        <a href="buy/{{$bicycle->id}}">Select bike</a>
     </div>
     @endforeach
     <a href="cartView">Go to cart</a>

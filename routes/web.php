@@ -8,6 +8,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\OrderBicycleController;
 use App\Http\Controllers\RegisterNewUserController;
 use App\Http\Controllers\UploadController;
+use App\Models\Bicycle;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
@@ -41,13 +42,15 @@ Route::get('registerNewUser', function () {
 Route::post('registerNewUser', RegisterNewUserController::class)->name('registerNewUser')->middleware('guest');
 
 //Route::get('bicycles/buyBike', BuyBikeController::class)->middleware('auth');
-Route::get('bicycles/buyBike/{bicycle:id}', [
-    'as' => 'bicycles/buyBike',
-    'uses' => BuyBikeController::class
-]);
+Route::get('bicycles/buy/{id}', function(string $id) {
+    return view('cart', [
+        'bicycle' => Bicycle::find($id)->firstOrFail()
+    ]);
+});
 
 
-//Route::get('bicycles/orderBike', OrderBicycleController::class)->middleware('auth');
+
+//Route::get('buy', OrderBicycleController::class)->middleware('auth');
 Route::post('orderBike/{bicycle:id}', [
     'as' => 'orderBike',
     'uses' => OrderBicycleController::class
