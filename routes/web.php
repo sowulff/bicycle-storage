@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EditUserController;
 use App\Http\Controllers\ListAllBicyclesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -62,13 +63,14 @@ Route::post('removeUser/{user:id}', [
     'uses' => RemoveUserController::class,
 ]);
 
-Route::get('updateUser/{user}', function (User $user) {
-    return view('admin.updateUser', [
+Route::get('editUser/{user}', function (User $user) {
+    return view('admin.editUser', [
         'user' => $user,
     ]);
 });
 
-// Route::post('editUser/{user:id}', [
-//     'as'   => 'editUser',
-//     'uses' => EditUserController::class,
-// ]);
+Route::post('editUser/{bicycle:id}', [
+    'as' => 'editUser',
+    'uses' => EditUserController::class,
+
+]);
