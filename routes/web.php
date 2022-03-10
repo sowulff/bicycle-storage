@@ -55,9 +55,8 @@ Route::post('editBicycle/{bicycle:id}', [
 ]);
 
 
-Route::get('/bicycles/edit/{id}', function (string $id) {
-    // dd(Bicycle::find($id)->firstOrFail());
+Route::get('bicycles/edit/{bicycle}', function (Bicycle $bicycle) {
     return view('edit', [
-        'bicycle' => Bicycle::find($id)->firstOrFail()
+        'bicycle' => $bicycle
     ]);
 });

@@ -21,6 +21,7 @@ class EditBicycleController extends Controller
         $bicycle->price = $request->input('price');
         $bicycle->quantity = $request->input('quantity');
         $bicycle->update();
-        return redirect()->back()->with('status', 'Bike Updated Successfully');
+
+        return redirect('/bicycles/all')->with('success', 'Succesfully updated');
     }
 }

@@ -7,6 +7,7 @@
     <form action="{{ route('editBicycle', $bicycle) }}" method="POST" class="py-8">
         @csrf
 
+
         <div class="form-group">
             <label for="name" class="block w-56 text-slate-700"></label>
             <input type="text" id="name" name="name" class="rounded-md mb-2 border-2 pl-1 text-sm w-56" value="{{$bicycle->name}}">
@@ -33,7 +34,7 @@
 
     </form>
 
-    <a class="hover:underline hover:text-gray-500" href="/dashboard">&larr; Back</a>
+    <a class="hover:underline hover:text-gray-500" href="/bicycles/all">&larr; Back</a>
 </div>
 @include('errors')
 @endsection
