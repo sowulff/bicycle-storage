@@ -38,39 +38,37 @@ Route::get('/', function () {
 Route::post('login', LoginController::class);
 Route::get('dashboard', DashboardController::class)->middleware('auth');
 Route::get('logout', LogoutController::class)->middleware('auth');
-Route::post('upload', UploadController::class)->middleware('auth');
-Route::view('admin', 'admin/upload')->name('upload');
 Route::get('bicycles/all', ListAllBicyclesController::class)->middleware('auth');
 Route::get('registerNewUser', function () {
     return view('registerNewUser');
 });
 Route::post('registerNewUser', RegisterNewUserController::class)->name('registerNewUser')->middleware('guest');
 
-Route::get('adminPanel', AdminPanelController::class)->middleware('auth');
 
-Route::post('makeAdmin/{user:id}', [
-    'as'   => 'makeAdmin',
-    'uses' => MakeAdminController::class,
-]);
+Route::middleware(['CheckAdminStatus', 'auth'])->group(function () {
+    Route::post('upload', UploadController::class);
+    Route::view('admin', 'admin/upload')->name('upload');
+    Route::post('editUser/{bicycle:id}', [
+        'as' => 'editUser',
+        'uses' => EditUserController::class,
 
-Route::post('removeAdmin/{user:id}', [
-    'as'   => 'removeAdmin',
-    'uses' => RemoveAdminController::class,
-]);
-
-Route::post('removeUser/{user:id}', [
-    'as'   => 'removeUser',
-    'uses' => RemoveUserController::class,
-]);
-
-Route::get('editUser/{user}', function (User $user) {
-    return view('admin.editUser', [
-        'user' => $user,
+    ]);
+    Route::get('editUser/{user}', function (User $user) {
+        return view('admin.editUser', [
+            'user' => $user,
+        ]);
+    });
+    Route::post('removeUser/{user:id}', [
+        'as'   => 'removeUser',
+        'uses' => RemoveUserController::class,
+    ]);
+    Route::get('adminPanel', AdminPanelController::class)->middleware('auth');
+    Route::post('makeAdmin/{user:id}', [
+        'as'   => 'makeAdmin',
+        'uses' => MakeAdminController::class,
+    ]);
+    Route::post('removeAdmin/{user:id}', [
+        'as'   => 'removeAdmin',
+        'uses' => RemoveAdminController::class,
     ]);
 });
-
-Route::post('editUser/{bicycle:id}', [
-    'as' => 'editUser',
-    'uses' => EditUserController::class,
-
-]);
