@@ -32,6 +32,7 @@ class AdminTest extends TestCase
             'is_admin' => false,
         ]);
     }
+
     public function test_add_admin_status()
     {
         $user = new User();
@@ -58,5 +59,52 @@ class AdminTest extends TestCase
             'email' => 'admin_tester@admin_tester.com',
             'is_admin' => true,
         ]);
+    }
+
+    public function test_edit_user()
+    {
+        $user = new User();
+        $user->name = 'admin';
+        $user->email = 'admin@admin.com';
+        $user->password = Hash::make('123');
+        $user->is_admin = true;
+        $user->save();
+
+        $response = $this
+            ->from('/')
+            ->actingAs($user)
+            ->post("editUser/{$user->id}", [
+                'name' => "Kaka",
+                'email' => "kaka@bulle.se"
+            ]);
+        $this->assertDatabaseHas('users', [
+            'name' => "Kaka",
+            'email' => "kaka@bulle.se"
+        ]);
+    }
+
+    public function test_update_password()
+    {
+        $user = new User();
+        $user->name = 'admin';
+        $user->email = 'admin@admin.com';
+        $user->password = Hash::make('oldpassword123');
+        $user->is_admin = true;
+        $user->save();
+
+        $response = $this
+            ->from('/')
+            ->actingAs($user)
+            ->post("editUser/{$user->id}", [
+                'name' => "$user->name",
+                'email' => "$user->email",
+                'password' => "newpassword123",
+            ]);
+        $this->followingRedirects()->post('logout');
+        $login = $this->followingRedirects()->post('login', [
+            'email' => $user->email,
+            'password' => 'newpassword123',
+        ]);
+        $login->assertSuccessful();
     }
 }
