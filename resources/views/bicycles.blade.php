@@ -8,6 +8,7 @@
         <p class="text-xl pb-2">{{$bicycle->name . " " . '(' . $bicycle->price . 'kr)'}}</p>
         <img src="{{ $bicycle->image }}" alt="">
         <a href="buy/{{$bicycle->id}}">Select bike</a>
+        <a href="favorite/{{$bicycle->id}}">Add to favourite</a>
     </div>
     @endforeach
     <a href="cartView">Go to cart</a>

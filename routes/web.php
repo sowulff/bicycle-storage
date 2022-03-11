@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BuyBikeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\favoriteController;
 use App\Http\Controllers\ListAllBicyclesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -36,10 +37,11 @@ Route::get('logout', LogoutController::class)->middleware('auth');
 Route::post('upload', UploadController::class)->middleware('auth');
 Route::view('admin', 'admin/upload')->name('upload');
 Route::get('bicycles/all', ListAllBicyclesController::class)->name('bicycleAll')->middleware('auth');
+Route::post('registerNewUser', RegisterNewUserController::class)->name('registerNewUser')->middleware('guest');
+
 Route::get('registerNewUser', function () {
     return view('registerNewUser');
 });
-Route::post('registerNewUser', RegisterNewUserController::class)->name('registerNewUser')->middleware('guest');
 
 //Route::get('bicycles/buyBike', BuyBikeController::class)->middleware('auth');
 Route::get('bicycles/buy/{id}', function(string $id) {
@@ -47,6 +49,11 @@ Route::get('bicycles/buy/{id}', function(string $id) {
         'bicycle' => Bicycle::find($id)
     ]);
 });
+
+Route::get('bicycles/favorite/{bicycle}', [
+    'as' => 'favorite',
+    'uses' => favoriteController::class
+]);
 
 //Route::get('buy', OrderBicycleController::class)->middleware('auth');
 Route::post('orderBike/{bicycle:id}', [
