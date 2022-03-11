@@ -44,11 +44,9 @@ Route::post('registerNewUser', RegisterNewUserController::class)->name('register
 //Route::get('bicycles/buyBike', BuyBikeController::class)->middleware('auth');
 Route::get('bicycles/buy/{id}', function(string $id) {
     return view('cart', [
-        'bicycle' => Bicycle::find($id)->firstOrFail()
+        'bicycle' => Bicycle::find($id)
     ]);
 });
-
-
 
 //Route::get('buy', OrderBicycleController::class)->middleware('auth');
 Route::post('orderBike/{bicycle:id}', [
