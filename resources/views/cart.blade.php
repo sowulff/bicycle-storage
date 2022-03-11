@@ -1,7 +1,10 @@
 @extends('layouts.basic')
 @section('content')
 
-<h2>Order your HELLO</h2>
+
+<a href="{{ route('bicycleAll') }}">
+    <h2>Go back</h2>
+</a>
 
 
 <div class="shadow-sm p-12 min-w-[300px] max-w-sm mx-auto rounded flex flex-col mt-4">

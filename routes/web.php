@@ -35,7 +35,7 @@ Route::get('dashboard', DashboardController::class)->middleware('auth');
 Route::get('logout', LogoutController::class)->middleware('auth');
 Route::post('upload', UploadController::class)->middleware('auth');
 Route::view('admin', 'admin/upload')->name('upload');
-Route::get('bicycles/all', ListAllBicyclesController::class)->middleware('auth');
+Route::get('bicycles/all', ListAllBicyclesController::class)->name('bicycleAll')->middleware('auth');
 Route::get('registerNewUser', function () {
     return view('registerNewUser');
 });
