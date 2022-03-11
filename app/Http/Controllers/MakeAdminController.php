@@ -12,6 +12,6 @@ class MakeAdminController extends Controller
     {
         $user->update(['is_admin' => true]);
         $user->save();
-        return redirect()->back();
+        return back()->with('success', "$user->name is now admin!");
     }
 }

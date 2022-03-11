@@ -25,6 +25,6 @@ class UploadController extends Controller
         $bicycle->quantity = $request->input('quantity');
         $bicycle->save();
 
-        return back();
+        return back()->with('success', 'Item created successfully!');
     }
 }

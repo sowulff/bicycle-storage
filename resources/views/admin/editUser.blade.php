@@ -1,5 +1,6 @@
 @extends('layouts.basic')
 @section('content')
+@include('flashMessages')
     <div class="shadow-2xl p-12 mt-32 max-w-sm mx-auto rounded">
         <a class="hover:underline hover:text-gray-500 block mb-6" href="/dashboard">&larr; Back</a>
         <h1 class="text-3xl font-bold underline text-center">Edit user details</h1>
@@ -23,5 +24,4 @@
                     </form>
     <a class="hover:underline hover:text-gray-500 mt-8" href="/adminPanel">&larr; Back</a>
     </div>
-    @include('errors')
 @endsection

@@ -11,6 +11,6 @@ class RemoveAdminController extends Controller
     {
         $user->update(['is_admin' => false]);
         $user->save();
-        return redirect()->back();
+        return back()->with('success', "$user->name is no longer a admin.");
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.basic')
 @section('content')
-
+@include('flashMessages')
 <div class="shadow-2xl p-12 mt-32 max-w-sm mx-auto rounded">
     <h1 class="mb-2 text-3xl text-center">
       BicycleStorage 2.0
@@ -27,6 +27,4 @@
     <a class="hover:underline hover:text-gray-500 mt-8" href="/dashboard">&larr; Back</a>
 </div>
   </div>
-    @include('errors')
-
 @endsection

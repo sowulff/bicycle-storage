@@ -19,5 +19,6 @@
     </form>
     <a class="block text-center mt-4 hover:text-slate-400 hover:underline" href="/registerNewUser">No account? Register here!</a>
   </div>
-    @include('errors')
+{{-- @include('errors') --}}
+@include('flashMessages')
 @endsection
