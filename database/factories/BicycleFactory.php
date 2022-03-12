@@ -17,7 +17,7 @@ class BicycleFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
+            'name' => $this->faker->bikeName(),
             'image' => $this->faker->bikeImage(),
             'quantity' => $this->faker->numberBetween(0, 20),
             'price' => $this->faker->numberBetween(5000, 120000)

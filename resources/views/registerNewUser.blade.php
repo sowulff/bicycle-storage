@@ -1,7 +1,7 @@
 @extends('layouts.basic')
 @section('content')
 @include('flashMessages')
-<div class="shadow-2xl p-12 mt-32 max-w-sm mx-auto rounded">
+<div class="shadow-2xl p-12 max-w-sm mx-auto rounded @if ($errors->any()) mt-12 @elseif (Session::get('success')) mt-12 @else mt-32 @endif">
     <h1 class="mb-2 text-3xl text-center">
       BicycleStorage 2.0
     </h1>

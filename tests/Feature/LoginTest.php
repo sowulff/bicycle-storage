@@ -53,6 +53,6 @@ class LoginTest extends TestCase
             'password' => '',
         ]);
 
-        $response->assertSeeText('Whoops, please try again!');
+        $response->assertSeeText('Please check the form for errors');
     }
 }

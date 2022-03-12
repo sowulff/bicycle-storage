@@ -1,7 +1,7 @@
 @extends('layouts.basic')
 @section('content')
 @include('flashMessages')
-    <div class="shadow-2xl p-12 mt-32 max-w-sm mx-auto rounded flex flex-col">
+    <div class="shadow-2xl p-12 max-w-sm mx-auto rounded flex flex-col @if ($errors->any()) mt-12 @else mt-32 @endif">
         <h1 class="text-3xl mx-auto font-bold">Upload new bicycle</h1>
 
         <form method="post" action="/upload" class="py-8">
