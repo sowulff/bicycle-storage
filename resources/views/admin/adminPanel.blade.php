@@ -2,7 +2,7 @@
 @section('content')
     @include('flashMessages')
     <div
-        class="shadow-2xl p-12 max-w-sm mx-auto rounded  @if ($errors->any()) mt-12 @elseif (Session::get('success')) mt-12 @else mt-32 @endif">
+        class="shadow-2xl p-12 w-fit mx-auto rounded  @if ($errors->any()) mt-12 @elseif (Session::get('success')) mt-12 @else mt-32 @endif">
         <a class="hover:underline hover:text-gray-500 block mb-6" href="/dashboard">&larr; Back</a>
         <h1 class="text-3xl font-bold underline text-center">List of all users</h1>
         @foreach ($users as $user)
