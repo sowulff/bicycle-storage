@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\OrderBicycleController;
 use App\Http\Controllers\RegisterNewUserController;
+use App\Http\Controllers\Removefavorite;
 use App\Http\Controllers\UploadController;
 use App\Models\Bicycle;
 use Illuminate\Auth\Events\Login;
@@ -59,4 +60,10 @@ Route::get('bicycles/favorite/{bicycle}', [
 Route::post('orderBike/{bicycle:id}', [
     'as' => 'orderBike',
     'uses' => OrderBicycleController::class
+]);
+
+//Route::get('buy', OrderBicycleController::class)->middleware('auth');
+Route::get('bicycles/removeFavorite/{wishlist:id}', [
+    'as' => 'RemoveFavorite',
+    'uses' => Removefavorite::class
 ]);

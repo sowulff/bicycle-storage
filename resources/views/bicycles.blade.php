@@ -8,9 +8,11 @@
         <p class="text-xl pb-2">{{$bicycles[$i]->name . " " . '(' . $bicycles[$i]->price . 'kr)'}}</p>
         <img src="{{ $bicycles[$i]->image }}" alt="">
         <a href="buy/{{$bicycles[$i]->id}}">Select bike</a>
-        <a href="favorite/{{$bicycles[$i]->id}}">Add to favourite</a>
         @if (isset($wishlist[$i]->favorite))
             <p>{{$wishlist[$i]->favorite}}</p>
+            <a href="removeFavorite/{{$wishlist[$i]->id}}">Remove favorite</a>
+        @else
+            <a href="favorite/{{$bicycles[$i]->id}}">Add to favourite</a>
         @endif
     </div>
     @endfor

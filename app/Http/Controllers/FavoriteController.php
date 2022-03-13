@@ -20,15 +20,8 @@ class favoriteController extends Controller
         $wishlist->bicycle_id = $bicycle->id;
         $wishlist->user_id = Auth::id();
 
-        if ($wishlist->favorite) {
-            $wishlist->favorite = false;
-            $wishlist->update();
-        } else {
-            $wishlist->favorite = true;
-            $wishlist->save();
-        }
-
-
+        $wishlist->favorite = true;
+        $wishlist->save();
 
         return back();
     }
