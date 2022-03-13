@@ -8,7 +8,7 @@
         <p class="text-xl pb-2">{{$bicycles[$i]->name . " " . '(' . $bicycles[$i]->price . 'kr)'}}</p>
         <img src="{{ $bicycles[$i]->image }}" alt="">
         <a href="buy/{{$bicycles[$i]->id}}">Select bike</a>
-        @if (isset($wishlist[$i]->favorite))
+        @if (isset($wishlist[$i]->favorite) && $wishlist[$i]->favorite)
             <p>{{$wishlist[$i]->favorite}}</p>
             <a href="removeFavorite/{{$wishlist[$i]->id}}">Remove favorite</a>
         @else
