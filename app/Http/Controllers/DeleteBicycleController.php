@@ -20,6 +20,6 @@ class DeleteBicycleController extends Controller
     public function __invoke(Bicycle $bicycle)
     {
         $bicycle->delete();
-        return redirect()->back();
+        return redirect('/bicycles/all')->with('deleted', 'Succesfully deleted');
     }
 }

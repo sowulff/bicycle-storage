@@ -1,22 +1,29 @@
 @extends('layouts.basic')
 @section('content')
 
-@if (\Session::has('success'))
-<div class="alert alert-success">
-    {!! \Session::get('success') !!}
-</div>
-@endif
+
 <div class="shadow-2xl p-12 mt-32 max-w-sm mx-auto rounded flex flex-col">
     <h2 class="text-3xl mx-auto">Here are all our bikes!</h2>
+    @if (\Session::has('success'))
+    <div class="bg-green-400 py-2 mt-2 rounded-md">
+        <p class="text-center "> {!! \Session::get('success') !!}</p>
+    </div>
+    @endif
+    @if (\Session::has('deleted'))
+    <div class="bg-red-400 py-2 mt-2 rounded-md">
+        <p class="text-center "> {!! \Session::get('deleted') !!}</p>
+    </div>
+    @endif
+
     @foreach ($bicycles as $bicycle)
     <div class="shadow-sm p-12 min-w-[300px] max-w-sm mx-auto rounded flex flex-col mt-4">
         <p class="text-xl pb-2">{{$bicycle->name . " " . '(' . $bicycle->price . 'kr)'}}</p>
         <img src="{{ $bicycle->image }}" alt="">
         <div class="flex justify-evenly mt-4">
-            <a class="rounded-md bg-yellow-400 py-1 px-1 " href="edit/{{ $bicycle->id }}">edit</a>
+            <a class="rounded-md bg-yellow-400 py-1 px-3 " href="edit/{{ $bicycle->id }}">edit</a>
             <form action="{{ route('deleteBicycle', $bicycle) }}" method="post">
                 @csrf
-                <button type="submit" class="bg-red-400 py-1 px-1 rounded-md hover:bg-red-500">delete</button>
+                <button type="submit" onclick="return confirm('Are you you whant to delete this bicycle?')" class=" bg-red-400 py-1 px-3 rounded-md hover:bg-red-500 ">delete</button>
             </form>
         </div>
     </div>
