@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('bicycle_id');
+            $table->boolean('favorite');
+            $table->timestamps();
         });
     }
 
