@@ -51,16 +51,18 @@ Route::get('bicycles/buy/{id}', function(string $id) {
     ]);
 });
 
-Route::get('bicycles/favorite/{bicycle}', [
-    'as' => 'favorite',
-    'uses' => favoriteController::class
-]);
-
 //Route::get('buy', OrderBicycleController::class)->middleware('auth');
 Route::post('orderBike/{bicycle:id}', [
     'as' => 'orderBike',
     'uses' => OrderBicycleController::class
 ]);
+
+
+Route::get('bicycles/favorite/{bicycle}', [
+    'as' => 'favorite',
+    'uses' => favoriteController::class
+]);
+
 
 //Route::get('buy', OrderBicycleController::class)->middleware('auth');
 Route::get('bicycles/removeFavorite/{wishlist:id}', [
