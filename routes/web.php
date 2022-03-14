@@ -13,19 +13,18 @@ use App\Http\Controllers\Removefavorite;
 use App\Http\Controllers\UploadController;
 use App\Models\Bicycle;
 use App\Http\Controllers\AdminPanelController;
-use App\Http\Controllers\DashboardController;
+
 use App\Http\Controllers\DeleteBicycleController;
 use App\Http\Controllers\EditBicycleController;
 use App\Http\Controllers\EditUserController;
-use App\Http\Controllers\ListAllBicyclesController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\LogoutController;
+
+
 use App\Http\Controllers\MakeAdminController;
-use App\Http\Controllers\RegisterNewUserController;
+
 use App\Http\Controllers\RemoveAdminController;
 use App\Http\Controllers\RemoveUserController;
-use App\Http\Controllers\UploadController;
-use App\Models\Bicycle;
+
+
 use App\Models\User;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Auth;
@@ -88,10 +87,7 @@ Route::get('bicycles/removeFavorite/{wishlist:id}', [
     'as' => 'RemoveFavorite',
     'uses' => Removefavorite::class
 ]);
-=======
 
-
-Route::get('bicycles/all', ListAllBicyclesController::class)->middleware('auth');
 Route::get('registerNewUser', function () {
     return view('registerNewUser');
 });

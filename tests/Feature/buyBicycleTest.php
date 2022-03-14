@@ -23,18 +23,12 @@ class buyBicycleTest extends TestCase
 
         $bicycle = Bicycle::factory()->create();
 
-        $attributes = [
-            'name' => 'mos',
-            'image' => 'https://static-01.daraz.com.np/p/acffd82a50e9e5bf7c58a43e22519863.png',
-            'quanitity' => 'mos',
-            'price' => 'mos',
-        ];
-
         $response = $this
             ->actingAs($user)
-            ->post("recipes.patch/{$bicycle->id}", $attributes);
+            ->followingRedirects()
+            ->get("/bicycles/buy/{$bicycle->id}");
 
-        $this->assertDatabaseHas('bicycles', $attributes);
         $response->assertStatus(200);
     }
 }
+
