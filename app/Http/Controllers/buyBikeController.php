@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bicycle;
 use Illuminate\Http\Request;
 
-class buyBikeController extends Controller
+class BuyBikeController extends Controller
 {
     /**
      * Handle the incoming request.

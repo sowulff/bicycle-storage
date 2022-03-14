@@ -6,7 +6,7 @@ use App\Models\Bicycle;
 use App\Models\WishList;
 use Illuminate\Support\Facades\Auth;
 
-class favoriteController extends Controller
+class FavoriteController extends Controller
 {
     /**
      * Handle the incoming request.
