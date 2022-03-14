@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bicycle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class UploadController extends Controller
 {
@@ -25,6 +26,8 @@ class UploadController extends Controller
         $bicycle->quantity = $request->input('quantity');
         $bicycle->save();
 
+
         return back()->with('success', 'Item created successfully!');
+main
     }
 }
