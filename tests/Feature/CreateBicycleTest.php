@@ -21,6 +21,7 @@ class CreateBicycleTest extends TestCase
         $user->name = 'admin';
         $user->email = 'admin@admin.com';
         $user->password = Hash::make('123');
+        $user->is_admin = true;
         $user->save();
 
         $response = $this

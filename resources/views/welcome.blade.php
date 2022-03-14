@@ -1,6 +1,6 @@
 @extends('layouts.basic')
 @section('content')
-<div class="shadow-2xl p-12 mt-32 max-w-sm mx-auto rounded">
+<div class="shadow-2xl p-12 mt-32 w-fit mx-auto rounded">
     <h1 class="mb-6 text-3xl text-center">
       BicycleStorage 2.0
     </h1>
@@ -19,5 +19,6 @@
     </form>
     <a class="block text-center mt-4 hover:text-slate-400 hover:underline" href="/registerNewUser">No account? Register here!</a>
   </div>
-    @include('errors')
+{{-- @include('errors') --}}
+@include('flashMessages')
 @endsection
