@@ -69,7 +69,8 @@ Route::post('editBicycle/{bicycle:id}', [
 Route::get('bicycles/edit/{bicycle}', function (Bicycle $bicycle) {
     return view('edit', [
         'bicycle' => $bicycle
-
+    ]);
+});
 
 Route::middleware(['CheckAdminStatus', 'auth'])->group(function () {
     Route::post('upload', UploadController::class);

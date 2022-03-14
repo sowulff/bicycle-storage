@@ -28,6 +28,5 @@ class UploadController extends Controller
 
 
         return back()->with('success', 'Item created successfully!');
-main
     }
 }
