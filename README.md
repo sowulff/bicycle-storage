@@ -50,3 +50,27 @@
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Code review 
+of Simon and Jennifer
+1. Can not see a test for uploads?
+2. Can not see a test for logout?
+3. Would be nice to view the bicycles added as favorites on the page.
+4. Maybe some short comments on the code.
+5. buyBiCycleTest.php - capital B in Buy instead av small.
+6. When you edit an item in the edit-function the price is changing, removes the last figures in the price.
+7. When you miss to fill in an input when you edit your item you are redirected to an error site. Thar can probably be resolved with a validation.
+8. You could use a capital F in Favorite (removeFavorite.php in Controller.
+9. When you try to log in with the wrong username or password you can see an error message. You could maybe change the message so that you can understand what you did wrong.
+10. When you try to register a user and miss something you can see an error message. You could maybe change the message so that you can understand what you did wrong.
+11. When you delete an item you can see an alert with a message that is wrong written and wrong spelled.
+12. You could look over the possibilities for only admin to edit an item for someone else. Now everyone can do that.
+13. Very structured and clean code. Nice!
+14. Hash is not used in the EditUserController so you can remove: use Illuminate\Support\Facades\Hash; 
+15. Auth is not used in the UploadController so you can remove: use Illuminate\Support\Facades\Auth;
+16. FlashMessages.blade maybe could use a comment explanation so that you can understand what it is about, other blade-files you can understand by the name :)
+17. Maybe it was just me but on the website I could not really understand when I saw this error-message: “Please check the form for errors” - FlashMessages.blade on line 27.
+18. Can not see that you are using the ViewBicycleController? Maybe you dont have to write anything inside a view-controller.
+19. Needed to run: run dev build aswell to open your project so maybe you can add that to the readme file.
+20. Very good job guys :)
+
