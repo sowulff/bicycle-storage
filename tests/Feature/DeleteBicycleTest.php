@@ -28,10 +28,9 @@ class DeleteBicycleTest extends TestCase
         $request = $this
             ->actingAs($user)
             ->followingRedirects()
-            ->delete("deleteBicycle/{bicycle->id}");
+            ->delete("deleteBicycle/" . $bicycle->id);
 
-        $this->assertDatabaseHas('bicycles', $bicycle->toArray());
+        $this->assertDatabaseMissing('bicycles', $bicycle->toArray());
         $request->assertSeeText("Bicycle has been deleted!");
-        $request->assertStatus(200);
     }
 }
