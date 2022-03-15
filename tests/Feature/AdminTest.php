@@ -71,12 +71,15 @@ class AdminTest extends TestCase
         $user->save();
 
         $response = $this
+            ->followingRedirects()
             ->from('/')
             ->actingAs($user)
             ->post("editUser/{$user->id}", [
                 'name' => "Kaka",
-                'email' => "kaka@bulle.se"
+                'email' => "kaka@bulle.se",
+                'password' => ''
             ]);
+
         $this->assertDatabaseHas('users', [
             'name' => "Kaka",
             'email' => "kaka@bulle.se"

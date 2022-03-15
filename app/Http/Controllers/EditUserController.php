@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class EditUserController extends Controller
 {
@@ -12,7 +14,7 @@ class EditUserController extends Controller
     {
         $data = request()->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', "unique:users,email," . $id],
             'password' => ['nullable', 'string', 'min:8']
         ]);
 

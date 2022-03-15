@@ -16,7 +16,7 @@
                       <input name="email" id="email" type="email" maxlength="40" required autofocus placeholder="user@example.com" class="block border rounded p-3 mb-3 w-full" value="{{ old('email') ?? $user->email }}">
 
                       <label for="password" class="block mb-2">Password</label>
-                      <input name="password" id="password" type="password" required maxlength="40" placeholder="**********" class="block border rounded p-3 mb-6 w-full">
+                      <input name="password" id="password" type="password" maxlength="40" placeholder="**********" class="block border rounded p-3 mb-6 w-full">
 
                       <button type="submit" class="login-button block text-lg font-bold bg-orange-400 w-full p-3 rounded text-black hover:bg-orange-500 hover:shadow-md">
                           Update user
