@@ -15,7 +15,6 @@ class BuyBikeController extends Controller
      */
     public function __invoke(Request $request, Bicycle $bicycle)
     {
-        //$bicycle = Bicycle::select('name', 'price', 'image', 'quantity')->where('id', '=', $bicycle->id)->get();
         $bicycle = Bicycle::all();
 
         return view('cart', ['bicycle' => $bicycle]);

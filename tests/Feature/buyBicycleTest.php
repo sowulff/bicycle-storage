@@ -30,5 +30,28 @@ class buyBicycleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_order_bicycle()
+    {
+        $user = new User();
+        $user->name = 'admin';
+        $user->email = 'admin@admin.com';
+        $user->password = Hash::make('123');
+        $user->save();
+
+        $bicycle = Bicycle::factory()->create();
+        $bicycleQuantity = $bicycle->attributesToArray()['quantity'];
+
+        $response = $this
+            ->actingAs($user)
+            ->followingRedirects()
+            ->post("orderBike/{$bicycle->id}", [
+                'quantity' => '1'
+            ]);
+
+        $this->assertDatabaseHas('bicycles', [
+            'quantity' => $bicycleQuantity - 1
+        ]);
+    }
 }
 
