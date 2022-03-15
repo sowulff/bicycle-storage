@@ -35,6 +35,9 @@
 
             </div>
         @endforeach
-        <a class="hover:underline hover:text-gray-500 mt-8" href="/dashboard">&larr; Back</a>
+        <div class="flex justify-between">
+            <a class="hover:underline hover:text-gray-500 mt-8" href="/dashboard">&larr; Back</a>
+            <a class="hover:underline hover:text-gray-500 mt-8 scroll-smooth" href="#">&uarr; Top</a>
+        </div>
     </div>
 @endsection

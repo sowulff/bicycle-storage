@@ -13,18 +13,12 @@ use App\Http\Controllers\Removefavorite;
 use App\Http\Controllers\UploadController;
 use App\Models\Bicycle;
 use App\Http\Controllers\AdminPanelController;
-
 use App\Http\Controllers\DeleteBicycleController;
 use App\Http\Controllers\EditBicycleController;
 use App\Http\Controllers\EditUserController;
-
-
 use App\Http\Controllers\MakeAdminController;
-
 use App\Http\Controllers\RemoveAdminController;
 use App\Http\Controllers\RemoveUserController;
-
-
 use App\Models\User;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Auth;
@@ -51,48 +45,34 @@ Route::get('/', function () {
 Route::post('login', LoginController::class);
 Route::get('dashboard', DashboardController::class)->middleware('auth');
 Route::get('logout', LogoutController::class)->middleware('auth');
-
-
 Route::post('upload', UploadController::class)->middleware('auth');
 Route::view('admin', 'admin/upload')->name('upload');
 Route::get('bicycles/all', ListAllBicyclesController::class)->name('bicycleAll')->middleware('auth');
 Route::post('registerNewUser', RegisterNewUserController::class)->name('registerNewUser')->middleware('guest');
-
 Route::get('registerNewUser', function () {
     return view('registerNewUser');
 });
 
-//Route::get('bicycles/buyBike', BuyBikeController::class)->middleware('auth');
-Route::get('bicycles/buy/{id}', function(string $id) {
+Route::get('bicycles/buy/{id}', function (string $id) {
     return view('cart', [
         'bicycle' => Bicycle::find($id)
     ]);
 });
 
-//Route::get('buy', OrderBicycleController::class)->middleware('auth');
 Route::post('orderBike/{bicycle:id}', [
     'as' => 'orderBike',
     'uses' => OrderBicycleController::class
 ]);
-
 
 Route::get('bicycles/favorite/{bicycle}', [
     'as' => 'favorite',
     'uses' => favoriteController::class
 ]);
 
-
-//Route::get('buy', OrderBicycleController::class)->middleware('auth');
 Route::get('bicycles/removeFavorite/{wishlist:id}', [
     'as' => 'RemoveFavorite',
     'uses' => Removefavorite::class
 ]);
-
-Route::get('registerNewUser', function () {
-    return view('registerNewUser');
-});
-Route::post('registerNewUser', RegisterNewUserController::class)->name('registerNewUser')->middleware('guest');
-
 
 Route::post('deleteBicycle/{bicycle:id}', [
     'as' => 'deleteBicycle',
