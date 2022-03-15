@@ -2,10 +2,7 @@
 @section('content')
 @include('flashMessages')
 
-
-
-
-<div class="shadow-2xl p-12 mt-32 max-w-sm mx-auto rounded flex flex-col">
+<div class="shadow-2xl p-12 max-w-sm mx-auto rounded flex flex-col @if ($errors->any()) mt-12 @elseif (Session::get('success')) mt-12 @else mt-32 @endif">
     <a class="hover:underline hover:text-gray-500 mb-4" href="/dashboard">&larr; Back</a>
     <h2 class="text-3xl mx-auto">Here are all our bikes!</h2>
     @if (\Session::has('success'))
