@@ -13,7 +13,7 @@ class OrderBicycleController extends Controller
     {
         $bicycle = Bicycle::find($id);
         if ($request->input('quantity') > $bicycle->quantity) {
-            return back()->withErrors(['invalidQuantity'=>'Opps you are ordering too many bicycls!']);
+            return back()->with('fail', 'Opps you are ordering too many bicycles!');
         }
         $bicycle->quantity -= $request->input('quantity');
         $bicycle->update();
