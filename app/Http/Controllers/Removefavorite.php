@@ -15,9 +15,7 @@ class Removefavorite extends Controller
      */
     public function __invoke(Wishlist $wishlist)
     {
-        $wishlist->favorite = false;
-        $wishlist->update();
-
+        $wishlist->delete();
         return back();
     }
 }

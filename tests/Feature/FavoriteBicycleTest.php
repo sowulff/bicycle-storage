@@ -37,4 +37,25 @@ class FavoriteBicycleTest extends TestCase
             'favorite' => true,
         ]);
     }
+
+    public function test_removing_favorite_bicycle()
+    {
+        $user = new User();
+        $user->name = 'admin';
+        $user->email = 'admin@admin.com';
+        $user->password = Hash::make('123');
+        $user->is_admin = true;
+        $user->save();
+
+        $bicycle = Bicycle::factory()->create();
+        //die(var_dump($bicycle->id));
+
+        $request = $this
+            ->actingAs($user)
+            ->followingRedirects()
+            ->delete("deleteBicycle/" . $bicycle->id);
+
+        $this->assertDatabaseMissing('bicycles', $bicycle->toArray());
+        $request->assertSeeText("Bicycle has been deleted!");
+    }
 }
