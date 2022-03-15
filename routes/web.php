@@ -16,6 +16,7 @@ use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\DeleteBicycleController;
 use App\Http\Controllers\EditBicycleController;
 use App\Http\Controllers\EditUserController;
+use App\Http\Controllers\ListWishlist;
 use App\Http\Controllers\MakeAdminController;
 use App\Http\Controllers\RemoveAdminController;
 use App\Http\Controllers\RemoveUserController;
@@ -48,6 +49,7 @@ Route::get('logout', LogoutController::class)->middleware('auth');
 Route::post('upload', UploadController::class)->middleware('auth');
 Route::view('admin', 'admin/upload')->name('upload');
 Route::get('bicycles/all', ListAllBicyclesController::class)->name('bicycleAll')->middleware('auth');
+Route::get('bicycles/list', ListWishlist::class)->name('wishlist')->middleware('auth');
 Route::post('registerNewUser', RegisterNewUserController::class)->name('registerNewUser')->middleware('guest');
 Route::get('registerNewUser', function () {
     return view('registerNewUser');

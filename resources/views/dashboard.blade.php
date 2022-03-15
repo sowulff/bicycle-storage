@@ -12,6 +12,7 @@
                 <a class="underline text-sky-300 hover:text-sky-500" href="admin">Add new bike here!</a>
             @endif
             <a class="underline text-sky-300 hover:text-sky-500" href="bicycles/all">See all our bikes here!</a>
+            <a class="underline text-sky-300 hover:text-sky-500" href="bicycles/list">Favorite bicycles list</a>
             @if ($user->is_admin)
                 <a class="underline text-sky-300 hover:text-sky-500" href="adminPanel">Admin panel</a>
             @endif
