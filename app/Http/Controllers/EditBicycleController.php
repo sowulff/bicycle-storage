@@ -15,6 +15,13 @@ class EditBicycleController extends Controller
      */
     public function __invoke(Request $request, $id)
     {
+        // $data = request()->validate([
+        //     'name' => 'required|string|min:3',
+        //     'image' => 'url',
+        //     'price' => 'required|integer',
+        //     'quantity' => 'required|integer',
+        // ]);
+
         $bicycle = Bicycle::find($id);
         $bicycle->name = $request->input('name');
         $bicycle->image = $request->input('image');

@@ -43,9 +43,6 @@ class EditBicycleTest extends TestCase
         $user->save();
 
         $bicycle = Bicycle::factory()->create();
-
-
-
         $request = $this
             ->actingAs($user)
             ->followingRedirects()

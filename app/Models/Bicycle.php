@@ -17,11 +17,15 @@ class Bicycle extends Model
         'quantity',
     ];
 
-    protected function price(): Attribute
-    {
-        return new Attribute(
-            get: fn ($value) => number_format($value, 0, ".", "."),
-            set: fn ($value) => $value,
-        );
-    }
+    // When updating a bicycle the format of price is divided by 1000 the formatting of laravel forms.
+
+
+
+    // protected function price(): Attribute
+    // {
+    //     return new Attribute(
+    //         get: fn ($value) => number_format($value, 0, ".", "."),
+    //         set: fn ($value) => $value,
+    //     );
+    // }
 }
