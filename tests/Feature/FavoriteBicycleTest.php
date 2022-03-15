@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Bicycle;
 use App\Models\User;
+use App\Models\Wishlist;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,6 @@ class FavoriteBicycleTest extends TestCase
         $user->save();
 
         $bicycle = Bicycle::factory()->create();
-        //die(var_dump($bicycle->id));
 
         $response = $this
             ->actingAs($user)
@@ -47,15 +47,13 @@ class FavoriteBicycleTest extends TestCase
         $user->is_admin = true;
         $user->save();
 
-        $bicycle = Bicycle::factory()->create();
-        //die(var_dump($bicycle->id));
+        $wishlist = Wishlist::factory()->create();
 
         $request = $this
             ->actingAs($user)
             ->followingRedirects()
-            ->delete("deleteBicycle/" . $bicycle->id);
+            ->get("bicycles/removeFavorite/" . $wishlist->id);
 
-        $this->assertDatabaseMissing('bicycles', $bicycle->toArray());
-        $request->assertSeeText("Bicycle has been deleted!");
+        $this->assertDatabaseMissing('wishlists', $wishlist->toArray());
     }
 }
