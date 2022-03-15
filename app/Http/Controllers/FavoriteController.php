@@ -19,7 +19,6 @@ class FavoriteController extends Controller
         $wishlist = new Wishlist();
         $wishlist->bicycle_id = $bicycle->id;
         $wishlist->user_id = Auth::id();
-
         $wishlist->favorite = true;
         $wishlist->save();
 
