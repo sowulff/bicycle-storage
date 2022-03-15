@@ -16,8 +16,8 @@
     </div>
     @endif
 
+    <?php $display_favorite = true; ?>
     @foreach ($bicycles as $bicycle)
-        <?php $display_favorite = true; ?>
         @foreach ($wishlist as $wishitem)
             @if ($wishitem->favorite && $wishitem->bicycle_id == $bicycle->id && $wishitem->user_id == Auth::id())
                 <div class="shadow-sm p-12 min-w-[300px] max-w-sm mx-auto rounded flex flex-col mt-4">
@@ -32,13 +32,9 @@
         @endforeach
     @endforeach
     @if ($display_favorite)
-        <p class="text-xl pb-2">You have not added any bicycles to your wishlist</p>
+        <p class="mx-auto text-xl mt-5">You have not added any bicycles to your wishlist</p>
         <a href="bicycleAll">Click here to view all bicycles</a>
     @endif
-    <div class="flex justify-between">
-        <a class="hover:underline hover:text-gray-500 mt-8" href="/dashboard">&larr; Back</a>
-        <a class="hover:underline hover:text-gray-500 mt-8 scroll-smooth" href="#">&uarr; Top</a>
-    </div>
 @include('errors')
 
 @endsection
