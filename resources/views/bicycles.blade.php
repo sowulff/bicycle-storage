@@ -25,7 +25,7 @@
         <a href="buy/{{$bicycle->id}}">Select bike 🛒</a>
         @foreach ($wishlist as $wishitem)
             @if ($wishitem->favorite && $wishitem->bicycle_id == $bicycle->id && $wishitem->user_id == Auth::id())
-                <a href="removeFavorite/{{$wishitem->id}}">Remove from favorites ❌</a>
+                <a href="removeFavorite/{{$wishitem->id}}">Remove from wishlist ❌</a>
                 <?php $display_favorite = false; ?>
                 @break
             @endif

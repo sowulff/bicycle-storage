@@ -2,13 +2,10 @@
 @section('content')
 
 
-<a href="{{ route('bicycleAll') }}">
-    <h2>Go back</h2>
-</a>
+<div class="shadow-xl p-12 min-w-[300px] max-w-sm mx-auto rounded flex flex-col mt-4">
+    <a class="hover:underline hover:text-gray-500 mb-4" href="{{ route('bicycleAll') }}">&larr; Back</a>
 
-
-<div class="shadow-sm p-12 min-w-[300px] max-w-sm mx-auto rounded flex flex-col mt-4">
-    <p class="text-xl pb-2">{{$bicycle->name . " " . '(' . $bicycle->price . 'kr)'}}</p>
+    <p class="text-xl pb-2 mt-14">{{$bicycle->name . " " . '(' . $bicycle->price . 'kr)'}}</p>
     <p>{{$bicycle->quantity . ' st'}}</p>
     <img src="{{ $bicycle->image }}" alt="">
     <form action="{{ route('orderBike', $bicycle)}}" method="POST">

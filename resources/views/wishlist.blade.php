@@ -20,20 +20,23 @@
     @foreach ($bicycles as $bicycle)
         @foreach ($wishlist as $wishitem)
             @if ($wishitem->favorite && $wishitem->bicycle_id == $bicycle->id && $wishitem->user_id == Auth::id())
-                <div class="shadow-sm p-12 min-w-[300px] max-w-sm mx-auto rounded flex flex-col mt-4">
-                <p class="text-xl pb-2">{{$bicycle->name . " " . '(' . $bicycle->price . 'kr)'}}</p>
-                <img src="{{ $bicycle->image }}" alt="">
+                <div class="mt-5">
+                    <p class="text-xl pb-2">{{$bicycle->name . " " . '(' . $bicycle->price . 'kr)'}}</p>
+                    <img src="{{ $bicycle->image }}" alt="">
 
-                <a href="buy/{{$bicycle->id}}">Select bike 🛒</a>
-                <a href="removeFavorite/{{$wishitem->id}}">Remove from favorites ❌</a>
+                    <div class="flex flex-col">
+                        <a href="buy/{{$bicycle->id}}">Select bike 🛒</a>
+                        <a href="removeFavorite/{{$wishitem->id}}">Remove from wishlist ❌</a>
+                    </div>
+                </div>
                 <?php $display_favorite = false; ?>
                 @break
             @endif
         @endforeach
     @endforeach
     @if ($display_favorite)
-        <p class="mx-auto text-xl mt-5">You have not added any bicycles to your wishlist</p>
-        <a href="bicycleAll">Click here to view all bicycles</a>
+        <p class="text-xl mt-14 mx-auto text-center">The wishlist is empty 😢</p>
+        <a class="mt-5 mx-auto" href="{{ route('bicycleAll') }}">Click here to view all bicycles</a>
     @endif
 @include('errors')
 
