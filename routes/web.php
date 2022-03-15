@@ -1,25 +1,28 @@
 <?php
 
-use App\Http\Controllers\AdminPanelController;
+
+use App\Http\Controllers\BuyBikeController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DeleteBicycleController;
-use App\Http\Controllers\EditBicycleController;
-use App\Http\Controllers\EditUserController;
+use App\Http\Controllers\favoriteController;
 use App\Http\Controllers\ListAllBicyclesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
-use App\Http\Controllers\MakeAdminController;
+use App\Http\Controllers\OrderBicycleController;
 use App\Http\Controllers\RegisterNewUserController;
-use App\Http\Controllers\RemoveAdminController;
-use App\Http\Controllers\RemoveUserController;
+use App\Http\Controllers\Removefavorite;
 use App\Http\Controllers\UploadController;
 use App\Models\Bicycle;
+use App\Http\Controllers\AdminPanelController;
+use App\Http\Controllers\DeleteBicycleController;
+use App\Http\Controllers\EditBicycleController;
+use App\Http\Controllers\EditUserController;
+use App\Http\Controllers\MakeAdminController;
+use App\Http\Controllers\RemoveAdminController;
+use App\Http\Controllers\RemoveUserController;
 use App\Models\User;
-
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -42,18 +45,34 @@ Route::get('/', function () {
 Route::post('login', LoginController::class);
 Route::get('dashboard', DashboardController::class)->middleware('auth');
 Route::get('logout', LogoutController::class)->middleware('auth');
-
-
 Route::post('upload', UploadController::class)->middleware('auth');
 Route::view('admin', 'admin/upload')->name('upload');
-
-
-Route::get('bicycles/all', ListAllBicyclesController::class)->middleware('auth');
+Route::get('bicycles/all', ListAllBicyclesController::class)->name('bicycleAll')->middleware('auth');
+Route::post('registerNewUser', RegisterNewUserController::class)->name('registerNewUser')->middleware('guest');
 Route::get('registerNewUser', function () {
     return view('registerNewUser');
 });
-Route::post('registerNewUser', RegisterNewUserController::class)->name('registerNewUser')->middleware('guest');
 
+Route::get('bicycles/buy/{id}', function (string $id) {
+    return view('cart', [
+        'bicycle' => Bicycle::find($id)
+    ]);
+});
+
+Route::post('orderBike/{bicycle:id}', [
+    'as' => 'orderBike',
+    'uses' => OrderBicycleController::class
+]);
+
+Route::get('bicycles/favorite/{bicycle}', [
+    'as' => 'favorite',
+    'uses' => favoriteController::class
+]);
+
+Route::get('bicycles/removeFavorite/{wishlist:id}', [
+    'as' => 'RemoveFavorite',
+    'uses' => Removefavorite::class
+]);
 
 Route::post('deleteBicycle/{bicycle:id}', [
     'as' => 'deleteBicycle',
