@@ -17,8 +17,7 @@
                 <a class="underline text-sky-300 hover:text-sky-500" href="adminPanel">Admin panel</a>
             @endif
 
-            <p class="">Do you want to <a href="logout"
-                    class="underline text-rose-400 hover:text-rose-600">logout</a>?</p>
+            <p class="">Do you want to <a href="logout"class="underline text-rose-400 hover:text-rose-600">logout</a>?</p>
         </div>
     </div>
 @endsection
