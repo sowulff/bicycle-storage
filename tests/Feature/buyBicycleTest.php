@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Dusk\Browser;
 
 class BuyBicycleTest extends TestCase
 {
@@ -30,7 +31,7 @@ class BuyBicycleTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_order_bicycle()
+    public function test_order_with_valid_quantity_bicycle()
     {
         $user = new User();
         $user->name = 'admin';
@@ -38,7 +39,13 @@ class BuyBicycleTest extends TestCase
         $user->password = Hash::make('123');
         $user->save();
 
-        $bicycle = Bicycle::factory()->create();
+        $bicycle = new Bicycle();
+        $bicycle->name = 'name';
+        $bicycle->image = 'image';
+        $bicycle->price = '3';
+        $bicycle->quantity = '3';
+        $bicycle->save();
+
         $bicycleQuantity = $bicycle->attributesToArray()['quantity'];
 
         $response = $this
@@ -51,6 +58,52 @@ class BuyBicycleTest extends TestCase
         $this->assertDatabaseHas('bicycles', [
             'quantity' => $bicycleQuantity - 1
         ]);
+    }
+
+    public function test_order_too_many_bicycles()
+    {
+        $user = new User();
+        $user->name = 'admin';
+        $user->email = 'admin@admin.com';
+        $user->password = Hash::make('123');
+        $user->save();
+
+        $bicycle = Bicycle::factory()->create();
+        $bicycleQuantity = $bicycle->attributesToArray()['quantity'];
+
+        $response = $this
+            ->from("/bicycles/buy/{$bicycle->id}")
+            ->actingAs($user)
+            ->followingRedirects()
+            ->post("orderBike/{$bicycle->id}", [
+                'quantity' => $bicycleQuantity + 1
+            ]);
+
+        $response->assertSeeText('Opps you are ordering too many bicycles!');
+    }
+
+    public function test_order_negative_amount_bicycles()
+    {
+        $user = new User();
+        $user->name = 'admin';
+        $user->email = 'admin@admin.com';
+        $user->password = Hash::make('123');
+        $user->save();
+
+        $bicycle = Bicycle::factory()->create();
+        $bicycleQuantity = $bicycle->attributesToArray()['quantity'];
+
+        $response = $this
+            ->from("/bicycles/buy/{$bicycle->id}")
+            ->actingAs($user)
+            ->followingRedirects()
+            ->post("orderBike/{$bicycle->id}", [
+                'quantity' => '-5'
+            ]);
+
+            $this->assertDatabaseHas('bicycles', [
+                'quantity' => $bicycleQuantity
+            ]);
     }
 }
 
