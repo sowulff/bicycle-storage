@@ -34,6 +34,7 @@
             <a href="favorite/{{$bicycle->id}}">Add to favorites ✅</a>
         @endif
 
+        @if ($user->is_admin)
         <div class="flex justify-evenly mt-4">
             <a class="rounded-md bg-yellow-400 py-1 px-3 " href="edit/{{ $bicycle->id }}">Edit</a>
             <form action="{{ route('deleteBicycle', $bicycle) }}" method="post">
@@ -41,6 +42,7 @@
                 <button type="submit" onclick="return confirm('Are you you whant to delete this bicycle?')" class=" bg-red-400 py-1 px-3 rounded-md hover:bg-red-500">Delete</button>
             </form>
         </div>
+        @endif
 
     </div>
     @endforeach

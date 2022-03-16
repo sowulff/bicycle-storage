@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bicycle;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ListAllBicyclesController extends Controller
 {
@@ -13,7 +14,8 @@ class ListAllBicyclesController extends Controller
 
         $bicycles = Bicycle::all();
         $wishlist = Wishlist::all();
+        $user = Auth::user();
 
-        return view('bicycles', ['bicycles' => $bicycles, 'wishlist' => $wishlist]);
+        return view('bicycles', ['bicycles' => $bicycles, 'wishlist' => $wishlist, 'user' => $user]);
     }
 }
